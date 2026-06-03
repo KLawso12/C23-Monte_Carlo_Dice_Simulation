@@ -15,11 +15,6 @@ int main(int argc, char* argv[argc + 1])
     char* end;
     for(int i = 1; argv[i]; i++)
     {
-        if (*end != '\0')
-        {
-        printf("Error: '%s' is not a number\n", argv[i]);
-        return EXIT_FAILURE;
-        }
         
         if(!dice_array[i-1])
         {
@@ -32,10 +27,14 @@ int main(int argc, char* argv[argc + 1])
             printf("Error: Dice cannot have negative faces\n");
             return EXIT_FAILURE;
         }
-        
-        
-        char *end;
+
         dice_array[i-1] = strtoul(argv[i],&end, 10);
+        
+        if (*end != '\0')
+        {
+        printf("Error: '%s' is not a number\n", argv[i]);
+        return EXIT_FAILURE;
+        }
     
         printf("The Number of faces on die %d is: %u\n", i, dice_array[i-1]);
     }
