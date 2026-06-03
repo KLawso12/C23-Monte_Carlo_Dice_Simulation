@@ -8,7 +8,7 @@ gcc -std=c23 -o monte_carlo_dice monte_carlo_dice.c
 ./monte_carlo_dice.exe [dice1faces] [dice2faces] ...
 
 ## example
-./monte_carlo_dice.exe 6 6 6 6
+./monte_carlo_dice 6 6 6 6
 
 ## output
 - shows faces per die
