@@ -12,7 +12,7 @@ int main(int argc, char* argv[argc + 1])
     unsigned int dice_array[argc-1] = {};
     
     
-    
+    char* end;
     for(int i = 1; argv[i]; i++)
     {
         if (*end != '\0')
