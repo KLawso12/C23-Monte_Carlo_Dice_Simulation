@@ -7,13 +7,37 @@ int main(int argc, char* argv[argc + 1])
 {
     unsigned _BitInt(128) S = 0;
     double mean = 0;
-    unsigned long long int N = 1e9;
-    
-    unsigned int dice_array[argc-1] = {};
-    
     
     char* end;
-    for(int i = 1; argv[i]; i++)
+        
+    if(argv[1][0] == '-')
+    {
+        printf("Error: number of trials cannot be negative\n");
+        return EXIT_FAILURE;
+    }
+    
+    unsigned long long int N = strtoull(argv[1],&end, 0);
+    
+    if(!N)
+    {
+        printf("Error: Cannot do 0 trials\n");
+        return EXIT_FAILURE;
+    }
+    
+    if (*end != '\0')
+    {
+    printf("Error: '%s' is not a number\n", argv[1]);
+    return EXIT_FAILURE;
+    }
+    
+    printf("Number of trials is: %llu\n", N);
+    
+    unsigned int number_of_dice = argc-2;
+    
+    unsigned int dice_array[number_of_dice] = {};
+    
+    
+    for(int i = 2; argv[i]; i++)
     {
         
         if(argv[i][0] == '-')
@@ -22,9 +46,9 @@ int main(int argc, char* argv[argc + 1])
             return EXIT_FAILURE;
         }
 
-        dice_array[i-1] = strtoul(argv[i],&end, 10);
+        dice_array[i-2] = strtoul(argv[i],&end, 10);
         
-        if(!dice_array[i-1])
+        if(!dice_array[i-2])
         {
             printf("Error: Dice cannot have 0 faces\n");
             return EXIT_FAILURE;
@@ -36,10 +60,8 @@ int main(int argc, char* argv[argc + 1])
         return EXIT_FAILURE;
         }
     
-        printf("The Number of faces on die %d is: %u\n", i, dice_array[i-1]);
+        printf("The Number of faces on die %d is: %u\n", i-1, dice_array[i-2]);
     }
-    
-    unsigned int number_of_dice = argc-1;
     
     
     //solve for the theoretical mean
