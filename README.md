@@ -1,19 +1,19 @@
 # C23-Monte_Carlo_Dice_Simulation
-A Simple program that solves the Monte Carlo for a number of user-selected dice, where the number of trials is one billion.
+A Simple program that solves the Monte Carlo for a number of user-selected dice, where the number of trials is N, selected by the user.
 
 ## compiling with GCC
 gcc -std=c23 -o monte_carlo_dice monte_carlo_dice.c
 
 ##using the program
-./monte_carlo_dice.exe [dice1faces] [dice2faces] ...
+./monte_carlo_dice.exe [numberoftrials] [dice1faces] [dice2faces] ...
 
 ## example
-./monte_carlo_dice 6 6 6 6
+./monte_carlo_dice 1000000000 6 6 6 6
 
 ## output
 - shows faces per die
 - calculates theoretical mean
-- runs 1 billion Monte Carlo iterations
+- runs N Monte Carlo iterations
 - outputs simulated mean
 
 ## notes and things I've ran into while making this
@@ -26,7 +26,7 @@ gcc -std=c23 -o monte_carlo_dice monte_carlo_dice.c
 - ran into an overflow when the sum was 32 bits, so _BitInt(128) was used to guarantee no overflow within reason
 - the XOR shift was added to the innermost loop to add a little more randomness without sacrificing much performance
 - it initially had a fixed array, but now it has a VLA that is initialized and obtains values from argc and argv
+- added number of trials N by taking the second argv value, this has shifted everything over by 2 now in important places
 
 ## potential future updates
-- the ability to choose number of trials N
 - calucate the standard deviation sigma for the Monte Carlo
