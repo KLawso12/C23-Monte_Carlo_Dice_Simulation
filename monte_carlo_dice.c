@@ -16,12 +16,6 @@ int main(int argc, char* argv[argc + 1])
     for(int i = 1; argv[i]; i++)
     {
         
-        if(!dice_array[i-1])
-        {
-            printf("Error: Dice cannot have 0 faces\n");
-            return EXIT_FAILURE;
-        }
-        
         if(argv[i][0] == '-')
         {
             printf("Error: Dice cannot have negative faces\n");
@@ -29,6 +23,12 @@ int main(int argc, char* argv[argc + 1])
         }
 
         dice_array[i-1] = strtoul(argv[i],&end, 10);
+        
+        if(!dice_array[i-1])
+        {
+            printf("Error: Dice cannot have 0 faces\n");
+            return EXIT_FAILURE;
+        }
         
         if (*end != '\0')
         {
