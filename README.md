@@ -4,7 +4,7 @@ A Simple program that solves the Monte Carlo for a number of user-selected dice,
 ## compiling with GCC
 gcc -std=c23 -o monte_carlo_dice monte_carlo_dice.c
 
-##using the program
+## using the program
 ./monte_carlo_dice.exe [numberoftrials] [dice1faces] [dice2faces] ...
 
 ## example
